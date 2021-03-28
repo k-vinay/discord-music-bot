@@ -16,7 +16,8 @@ from youtube_search import YoutubeSearch
 f = open("secrets.txt")
 clientTag=f.readline()
 TOKEN = f.readline()
-cmd = ["curl", "-X", "POST", "-H", "Authorization: Basic ZWI0OWYxNjJjNzJkNDhlNmE1M2E1MmIyZjE4M2EyMGU6YjQ1MGUxMzQ1NjRmNDMxNmEwMDRmNjBhYmFmYWQxYzA=", "-d", "grant_type=client_credentials", "https://accounts.spotify.com/api/token"]
+spTOKEN = f.readline()
+cmd = ["curl", "-X", "POST", "-H", "Authorization: Basic " + spTOKEN, "-d", "grant_type=client_credentials", "https://accounts.spotify.com/api/token"]
 auth=(json.loads(subprocess.check_output(cmd).decode("utf-8")))["access_token"]
 f.close()
 
